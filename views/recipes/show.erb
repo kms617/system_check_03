@@ -1,0 +1,9 @@
+<h1><%= @recipe_cards[0]["name"] %></h1>
+
+  <p><%= @recipe_cards[0]["description"] %></p>
+
+  <ul><% @recipe_cards.each do |card| %>
+  <li><%= card["ingredients_list"] %></li>
+  <% end %></ul>
+
+  <p><%= @recipe_cards[0]["instructions"] %></p>
