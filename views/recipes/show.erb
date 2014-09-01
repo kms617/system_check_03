@@ -1,9 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title><%= @recipe_cards[0]["name"] %></title>
+    <link rel="stylesheet" href="/app.css" />
+  </head>
+
+  <body>
+
+<div class="pagecontents">
 <h1><%= @recipe_cards[0]["name"] %></h1>
-
   <p><%= @recipe_cards[0]["description"] %></p>
-
   <ul><% @recipe_cards.each do |card| %>
   <li><%= card["ingredients_list"] %></li>
   <% end %></ul>
 
-  <p><%= @recipe_cards[0]["instructions"] %></p>
+<p><%= @recipe_cards[0]["instructions"] %></p>
+

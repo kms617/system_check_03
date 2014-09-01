@@ -1,5 +1,12 @@
-<h1>My Recipe Box</h1>
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <link rel="stylesheet" href="/app.css"/>
+  </head>
+  <body>
 
+<div class="pagecontents">
+<h1>From My Kitchen</h1>
 <ul>
   <% @recipes.each do |recipe| %>
     <li><a href="/recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a>

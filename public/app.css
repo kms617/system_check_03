@@ -1,0 +1,62 @@
+body {
+
+  background-image: url('red_gingham.jpg');
+    background-repeat: repeat-xy;
+
+}
+
+.pagecontents{
+
+  padding: 20px;
+  background-color: beige;
+  border-color: #5CCCCC;
+  margin-right: auto;
+  margin-left: auto;
+  width: 70%;
+  font-family: verdana;
+  color: #006363;
+
+}
+
+ul{
+
+list-style: none
+
+}
+
+a{
+  font-family: verdana;
+  font-size: 17px;
+  text-decoration: none;
+}
+
+a:visited {
+
+color: #FAFAFA;
+
+}
+
+a:link {
+
+color: black;
+
+}
+
+a:visited {
+
+color: #8A8A54;
+
+}
+
+h1 {
+  font-family: verdana;
+  font-size: 40px;
+  color: #006363;
+}
+
+h2 {
+  font-family: verdana;
+  font-size: 30px;
+  color: #006363;
+
+}
