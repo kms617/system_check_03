@@ -8,13 +8,12 @@ body {
 .pagecontents{
 
   padding: 20px;
-  background-color: beige;
-  border-color: #5CCCCC;
+  background-color: #FDDCC1;
   margin-right: auto;
   margin-left: auto;
   width: 70%;
   font-family: verdana;
-  color: #006363;
+  color: #004500;
 
 }
 
@@ -32,31 +31,31 @@ a{
 
 a:visited {
 
-color: #FAFAFA;
+color: #004500;
 
 }
 
 a:link {
 
-color: black;
+color: #004500;
 
 }
 
 a:visited {
 
-color: #8A8A54;
+color: #004500;
 
 }
 
 h1 {
   font-family: verdana;
   font-size: 40px;
-  color: #006363;
+  color: #004400;
 }
 
 h2 {
   font-family: verdana;
   font-size: 30px;
-  color: #006363;
+  color: #004400;
 
 }

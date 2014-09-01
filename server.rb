@@ -23,17 +23,16 @@ def db_connection
     connection = PG.connect(dbname: 'recipes')
 
     yield(connection)
-
   ensure
     connection.close
   end
 end
 
-def get_all_recipes
-  query= %Q{SELECT * FROM recipes ORDER BY name;}
+def get_all_recipes(order_param, offset)
+  query= %Q{SELECT * FROM recipes ORDER BY #{order_param} LIMIT 20 OFFSET #{offset};}
 
   results = db_connection do |conn|
-    conn.exec('SELECT * FROM recipes ORDER BY name;')
+    conn.exec(query)
   end
 
   results.to_a
@@ -51,14 +50,34 @@ def get_recipe_info(id)
   results.to_a
 end
 
+def count_recipes
+  query = "SELECT COUNT(*) FROM recipes;"
+
+  count = db_connection do |conn|
+    conn.exec(query)
+  end
+
+  count.to_a.first["count"].to_i
+end
+
 ###########################################################################
 ###########################################################################
 ## ROUTES
 ###########################################################################
 
 get '/recipes' do
+  recipe_count = count_recipes
 
-  @recipes = get_all_recipes
+  if recipe_count % 20 == 0
+    @last_page = recipe_count / 20
+  else
+    @last_page = recipe_count / 20 + 1
+  end
+
+  @page_no = (params[:page] || 1).to_i
+  offset = (@page_no = 1) * 20
+  @order_param = params[:order] || 'name'
+  @recipes = get_all_recipes(@order_param, offset)
 
   erb :'recipes/index'
 end
