@@ -36,6 +36,7 @@ def get_all_recipes(order_param, offset)
   end
 
   results.to_a
+binding.pry
 end
 
 def get_recipe_info(id)
