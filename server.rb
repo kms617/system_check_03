@@ -36,7 +36,6 @@ def get_all_recipes(order_param, offset)
   end
 
   results.to_a
-binding.pry
 end
 
 def get_recipe_info(id)
@@ -44,9 +43,9 @@ def get_recipe_info(id)
             WHERE id = $1;
             }
 
-    results = db_connection do |conn|
-      conn.exec(query, [id])
-    end
+  results = db_connection do |conn|
+    conn.exec(query, [id])
+  end
 
   results.to_a
 end
@@ -66,6 +65,10 @@ end
 ## ROUTES
 ###########################################################################
 
+get '/' do
+  redirect '/recipes'
+end
+
 get '/recipes' do
   recipe_count = count_recipes
 
@@ -76,7 +79,7 @@ get '/recipes' do
   end
 
   @page_no = (params[:page] || 1).to_i
-  offset = (@page_no = 1) * 20
+  offset = (@page_no - 1) * 20
   @order_param = params[:order] || 'name'
   @recipes = get_all_recipes(@order_param, offset)
 
@@ -85,6 +88,6 @@ end
 
 get '/recipes/:id' do
 
-   @recipe_cards = get_recipe_info(params[:id])
-   erb :'recipes/show'
- end
+  @recipe_cards = get_recipe_info(params[:id])
+  erb :'recipes/show'
+end

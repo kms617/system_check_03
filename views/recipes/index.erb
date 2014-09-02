@@ -1,27 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <link rel="stylesheet" href="/app.css"/>
-  </head>
-  <body>
-
 <div class="pagecontents">
 <h1>From My Kitchen</h1>
 
 <div>
   <% if @page_no > 1 %>
-    <a href="/movies?page=<%= @page_no - 1 %>&order=<%+ @order_param %>">Previous</a>
+    <a href="/recipes?page=<%= @page_no - 1 %>&order=<%= @order_param %>">Previous</a>
   <% end %>
-  <if @page_no < @last_page %>
-    <a href="/movies?page=<%= @page_no + 1 %>&order=<%+ @order_param %>">Next</a>
+  <% if @page_no < @last_page %>
+    <a href="/recipes?page=<%= @page_no + 1 %>&order=<%= @order_param %>">Next</a>
   <% end %>
 </div>
 
-<body>
   <ul>
     <% @recipes.each do |recipe| %>
       <li><a href="/recipes/<%= recipe["id"] %>"><%= recipe["name"] %></a>
       </li>
     <% end %>
   </ul>
-</body>
